@@ -89,7 +89,7 @@
               <OutArgument x:TypeArguments="x:String">[saveFilePath]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">["d:\playlists\"+in_name.Replace("/","_")+"\"+Now.ToString("yyyy-MM-dd--hh-mm-ss")]</InArgument>
+              <InArgument x:TypeArguments="x:String">["d:\playlists\"+in_name.Replace("/","_").Replace("\","_")+"\"+Now.ToString("yyyy-MM-dd--hh-mm-ss")]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
@@ -97,7 +97,7 @@
               <OutArgument x:TypeArguments="x:String">[saveFileName]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[in_name.replace("/","_")]</InArgument>
+              <InArgument x:TypeArguments="x:String">[in_name.replace("/","_").Replace("\","_")]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
         </scg:List>
@@ -265,12 +265,8 @@
             </If>
             <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="605,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="SaveAs.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_folder">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="saveFilePath" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_filename">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="saveFileName" />
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_folder">[saveFilePath]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_filename">[saveFileName]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="605,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />

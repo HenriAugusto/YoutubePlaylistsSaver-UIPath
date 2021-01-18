@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1017,864</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1017,904</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>prepareFolderPathOrFileName_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -63,7 +63,7 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This sequence takes a string and then replace all of illegal characters so it can be used as a folder path or file name.&#xD;&#xA;&#xD;&#xA;The client must especify if we are dealing with a folder or not so we can accomodate for the &quot;:&quot; which is valid in the drive letter of a folder path." DisplayName="prepareFolderPathOrFileName" sap:VirtualizedContainerService.HintSize="695,799" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This sequence takes a string and then replace all of illegal characters so it can be used as a folder path or file name.&#xA;&#xA;The client must especify if we are dealing with a folder or not so we can accomodate for the &quot;:&quot; which is valid in the drive letter of a folder path." DisplayName="prepareFolderPathOrFileName" sap:VirtualizedContainerService.HintSize="695,799" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -110,7 +110,7 @@
               <OutArgument x:TypeArguments="x:String">[Str]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[Str.Replace("?"," ")]</InArgument>
+              <InArgument x:TypeArguments="x:String">[Str.Replace("?","")]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
@@ -118,7 +118,7 @@
               <OutArgument x:TypeArguments="x:String">[Str]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[Str.Replace("*","_")]</InArgument>
+              <InArgument x:TypeArguments="x:String">[Str.Replace("*","")]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
         </scg:List>
