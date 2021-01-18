@@ -86,14 +86,10 @@
       <Variable x:TypeArguments="sd:DataTable" Name="playlistsTable" />
       <Variable x:TypeArguments="x:Int32" Name="pageMin">
         <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" Value="6" />
+          <Literal x:TypeArguments="x:Int32" Value="7" />
         </Variable.Default>
       </Variable>
-      <Variable x:TypeArguments="x:Int32" Name="pageMax">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" Value="99999" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Int32" Default="99999" Name="pageMax" />
       <Variable x:TypeArguments="x:Int32" Default="1" Name="currPage" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
