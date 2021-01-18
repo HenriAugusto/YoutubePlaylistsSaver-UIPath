@@ -70,6 +70,7 @@
   <Flowchart sap:VirtualizedContainerService.HintSize="634,664" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="ui:Browser" Name="browser" />
+      <Variable x:TypeArguments="x:String" Name="mainFolder" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -90,9 +91,14 @@
           <av:Size x:Key="ShapeSize">200,51</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke &quot;parsePlaylistsList&quot; workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="parsePlaylistsList.xaml">
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke &quot;parsePlaylistsList&quot; workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="parsePlaylistsList.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">[browser]</InArgument>
+          <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">
+            <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="browser" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_baseFolder">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="mainFolder" />
+          </InArgument>
         </ui:InvokeWorkflowFile.Arguments>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -198,13 +204,15 @@
           <av:PointCollection x:Key="ConnectorLocation">330,130 360,130 360,80 380,80</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence sap2010:Annotation.AnnotationText="This Sequence opens the Browser in the playlists page and set the results per page to 50.&#xA;&#xA;There are multiple pages where you can access your playlists in Youtube but only this one below shows all your playlists (if you have A LOT of playlists, at least)" DisplayName="Sequence - Setup" sap:VirtualizedContainerService.HintSize="509,2624" sap2010:WorkflowViewState.IdRef="Sequence_6">
+      <Sequence sap2010:Annotation.AnnotationText="This Sequence opens the Browser in the playlists page and set the results per page to 50.&#xA;&#xA;There are multiple pages where you can access your playlists in Youtube but only this one below shows all your playlists (if you have A LOT of playlists, at least)" DisplayName="Sequence - Setup" sap:VirtualizedContainerService.HintSize="200,243" sap2010:WorkflowViewState.IdRef="Sequence_6">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="467,59" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Make sure you're logged in Youtube using the Chrome browser&quot;]" />
+        <ui:SelectFolder DisplayName="Select Folder" sap:VirtualizedContainerService.HintSize="467,22" sap2010:WorkflowViewState.IdRef="SelectFolder_2" SelectedFolder="[mainFolder]" />
         <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="467,2460" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[browser]" Url="https://studio.youtube.com">
           <ui:OpenBrowser.Body>
             <ActivityAction x:TypeArguments="x:Object">

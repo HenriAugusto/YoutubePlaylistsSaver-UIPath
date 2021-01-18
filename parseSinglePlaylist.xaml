@@ -2,6 +2,7 @@
   <x:Members>
     <x:Property Name="in_name" Type="InArgument(x:String)" />
     <x:Property Name="in_URL" Type="InArgument(x:String)" />
+    <x:Property Name="in_baseFolder" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -81,7 +82,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Sets the file name and file path for saving the playlist. &#xA;&#xA;Notice we replace &quot;/&quot; with &quot;_&quot; to avoid creating subfolders and invalid file names" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="681,201" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Sets the file name and file path for saving the playlist. &#xA;&#xA;Notice we replace &quot;/&quot; with &quot;_&quot; to avoid creating subfolders and invalid file names" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,201" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
@@ -89,7 +90,7 @@
               <OutArgument x:TypeArguments="x:String">[saveFilePath]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">["d:\playlists\"+in_name.Replace("/","_").Replace("\","_")+"\"+Now.ToString("yyyy-MM-dd--hh-mm-ss")]</InArgument>
+              <InArgument x:TypeArguments="x:String">[in_baseFolder+"\"+in_name.Replace("/","_").Replace("\","_")+"\"+Now.ToString("yyyy-MM-dd--hh-mm-ss")]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">

@@ -1,6 +1,7 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="file" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_browser" Type="InArgument(ui:Browser)" />
+    <x:Property Name="in_baseFolder" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -84,7 +85,11 @@
   <Sequence sap2010:Annotation.AnnotationText="" sap:VirtualizedContainerService.HintSize="1027,4548" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="playlistsTable" />
-      <Variable x:TypeArguments="x:Int32" Default="7" Name="pageMin" />
+      <Variable x:TypeArguments="x:Int32" Name="pageMin">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:Int32" Value="1" />
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="x:Int32" Default="99999" Name="pageMax" />
       <Variable x:TypeArguments="x:Int32" Default="1" Name="currPage" />
     </Sequence.Variables>
@@ -289,6 +294,7 @@
                                   <ui:InvokeWorkflowFile.Arguments>
                                     <InArgument x:TypeArguments="x:String" x:Key="in_name">[playlistName]</InArgument>
                                     <InArgument x:TypeArguments="x:String" x:Key="in_URL">[href]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_baseFolder">[in_baseFolder]</InArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
                               </Sequence>
